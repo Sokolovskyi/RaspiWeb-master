@@ -1,0 +1,6 @@
+{
+    "dbserver": "192.168.137.30",
+    "dbname" : "domain1",
+    "dbuser" : "admin",
+    "dbpassword" : "admin"    
+}

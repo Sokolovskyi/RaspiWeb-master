@@ -1,0 +1,299 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      >
+
+    <h:head>
+        <title>Raspbery Pi</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+        <script src="js/config.js"></script>
+
+        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+        <script src="js/service.js"></script>
+        <script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1.1','packages':['line', 'corechart']}]}"></script>
+        <link rel="stylesheet" href="./css/custom.css" />
+    </h:head>
+
+    <h:body>
+        <div data-role="page" id="page1">
+            <div data-role="header">
+                <h1>Raspi</h1>
+                <a data-transition="slide"  data-icon="arrow-r" class="ui-btn-right" data-iconpos="right" href="#page2">Weiter</a>
+            </div>
+            <div data-role="content">
+                <img src="images/rpi.jpg"  style="width: 100%;"
+                     />
+            </div>
+            <div data-role="footer" data-position="fixed" data-theme="a">
+                <a data-transition="flip" data-direction="reverse"  data-icon="info" data-theme="b" href="#page5">Lerninhalte</a>
+                <a class="ui-btn-right" data-transition="flip" data-direction="reverse"  data-icon="info" data-theme="b" href="#page9">Webservices</a>
+                <h1>(c) 2015 by Dr. Jörg Tuttas</h1>
+            </div>
+        </div>
+        <div data-role="page" id="page2">
+            <div data-role="header">
+                <a data-transition="slide"  data-direction="reverse" data-icon="arrow-l"  class="ui-btn-left" data-iconpos="left" href="#page1">zurück</a>
+                <h1>LED schalten</h1>
+                <a data-transition="slide"   data-icon="arrow-r" class="ui-btn-right" data-iconpos="right" href="#page3">Weiter</a>
+            </div>
+            <div data-role="content">
+                <h:form prependId="false">
+                <div class="toggle" >
+                    <h:selectOneMenu p:data-role="slider" id="toggle"  >
+                        <f:selectItem id="item1" itemLabel="OFF" itemValue="0">
+                        </f:selectItem>
+                        <f:selectItem id="item2" itemLabel="ON" itemValue="100">
+                        </f:selectItem>
+                        <f:ajax  />
+                    </h:selectOneMenu>
+                   
+                </div>
+                </h:form>
+            </div>
+            <div data-role="content">
+                <div data-role="fieldcontain" id="fieldsliderNew">                  
+                    <input type="range" id="sliderNew"  min="0" max="100" step="1"
+                           />
+                    <br/>
+                </div>
+            </div>
+            <div data-role="footer" data-position="fixed" data-theme="a">
+                <a  data-transition="flip" data-direction="reverse"  data-icon="info" data-theme="b" href="#page6">Lerninhalte</a>
+                <h1>(c) 2015 by Dr. Jörg Tuttas</h1>
+            </div>
+        </div>
+        <div data-role="page" id="page3">
+            <div data-role="header">
+                <a  data-transition="slide"  data-direction="reverse" data-icon="arrow-l" class="ui-btn-left" data-iconpos="left" href="#page2">zurück</a>
+                <h1>LED dimmen</h1>
+                <a data-transition="slide"  data-icon="arrow-r" class="ui-btn-right" data-iconpos="right" href="#page4">Weiter</a>
+            </div>
+            <div data-role="content">
+                <div data-role="fieldcontain" id="fieldslider1">
+                    
+                    <input type="range" id="slider1"  min="0" max="100" step="1"
+                           />
+                    <br/>
+                    <input type="checkbox" name="gyro" id="gyro" class="custom" />
+                    <label for="gyro">Gyroscope</label>                    
+                    
+                </div>
+            </div>
+            <div data-role="footer" data-position="fixed" data-theme="a">
+                <a  data-transition="flip" data-direction="reverse"  data-icon="info" data-theme="b" href="#page7">Lerninhalte</a>
+                <h1>(c) 2015 by Dr. Jörg Tuttas</h1>
+
+            </div>
+        </div>
+        <div data-role="page" id="page4">
+            <div data-role="header">
+                <a  data-transition="slide"  data-direction="reverse" data-icon="arrow-l" class="ui-btn-left" data-iconpos="left"  href="#page3">zurück</a>
+                <h1>Thermometer</h1>
+                <a data-transition="slide"  data-icon="arrow-r" class="ui-btn-right" data-iconpos="right" href="#page10">Weiter</a>
+            </div>
+            <div data-role="content">
+                
+                <h1 id="h1temp">Temperatur ??°C</h1>
+                <div data-role="fieldcontain" id="slider2">
+
+                </div>
+                <h1 id="h1pressure">Pressure ?? Pa</h1>
+                <div data-role="fieldcontain" id="slider3">
+
+                </div>
+                <div class="glowDiv">
+                    
+                </div>
+            </div>
+            <div data-role="footer" data-position="fixed" data-theme="a">
+                <a  data-transition="flip" data-direction="reverse"  data-icon="info" data-theme="b" href="#page8">Lerninhalte</a>
+                <h1>(c) 2015 by Dr. Jörg Tuttas</h1>
+            </div>
+        </div>
+        <div data-role="page" id="page5" data-title="Lerninhalte 1">
+            <div data-role="header">
+                <h1>Lerninhalte 1</h1>
+            </div>
+            <div data-role="content">
+                <h2>LF4</h2>
+                <ul>
+                    <li>elektrische Leistung</li>
+                    <li>von Neumann Architektur</li>
+                    <li>Betriebssysteme einrichten (Linux)</li>
+
+                </ul>
+                <h2>LF6</h2>
+                <ul>
+                    <li>Webserver u. Applicationserver</li>
+                    <li>Datenbank einrichten</li>
+                    <li>Pakete und Paketmanager(Linux)</li>
+
+                </ul>
+            </div>
+            <div data-role="footer" data-position="fixed" data-theme="a">
+                <a  data-transition="flip" data-direction="reverse"  data-theme="b" data-icon="back"  data-iconpos="right" href="#page1">Zurück</a>
+                <h1>(c) 2015 by Dr. Jörg Tuttas</h1>
+            </div>
+        </div>
+        <div data-role="page" id="page6" data-title="Lerninhalte 2">
+            <div data-role="header">
+                <h1>Lerninhalte 2</h1>
+            </div>
+            <div data-role="content">
+                <h2>LF4</h2>
+                <ul>
+                    <li>Ohmsches Gesetz</li>
+                    <li>Halbleiter (LED)</li>
+                    <li>Reihenschaltung mit nichtliniearen Bauelementen</li>
+
+                </ul>
+                <h2>LF6</h2>
+                <ul>
+                    <li>HTML,CSS</li>
+                    <li>Zahlensysteme</li>
+                    <li>Client u. Server</li>
+                    <li>Java (J2EE), Beans, JSF</li>
+                    <li>IO Port Programmierung</li>
+
+                </ul>
+
+            </div>
+            <div data-role="footer" data-position="fixed" data-theme="a">
+                <a  data-transition="flip" data-direction="reverse"  data-theme="b" data-icon="back"  data-iconpos="right" href="#page2">Zurück</a>
+                <h1>(c) 2015 by Dr. Jörg Tuttas</h1>
+            </div>
+        </div>
+        <div data-role="page" id="page7" data-title="Lerninhalte 3">
+            <div data-role="header">
+                <h1>Lerninhalte 3</h1>
+            </div>
+            <div data-role="content">
+                <h2>LF4</h2>
+                <ul>
+                    <li>Pulsweitenmodulation</li>
+
+                </ul>
+                <h2>LF6</h2>
+                <ul>
+                    <li>Nebenläufige Prozesse (Threads)</li>
+                    <li>Datentypen (ganzzahlige)</li>
+
+                </ul>
+            </div>
+            <div data-role="footer" data-position="fixed" data-theme="a">
+                <a  data-transition="flip" data-direction="reverse"  data-theme="b" data-icon="back"  data-iconpos="right" href="#page3">Zurück</a>
+                <h1>(c) 2015 by Dr. Jörg Tuttas</h1>
+            </div>
+        </div>
+        <div data-role="page" id="page8" data-title="Lerninhalte 4">
+            <div data-role="header">
+                <h1>Lerninhalte 4</h1>
+            </div>
+            <div data-role="content">
+                <h2>LF4</h2>
+                <ul>
+                    <li>Analog- / Digitalwandlung</li>
+                    <li>Sensortechnik</li>
+                    <li>I2C BUS</li>
+                    
+
+                </ul>
+                <h2>LF6</h2>
+                <ul>
+                    <li>Datentypen (fließkomma)</li>
+                    <li>Websockets</li>
+                    <li>Entwurfsmuster (Singleton, Observer)</li>
+                    <li>Datenbanken (SQL)</li>
+                    
+
+                </ul>			
+            </div>
+            <div data-role="footer" data-position="fixed" data-theme="a">
+                <a  data-transition="flip" data-direction="reverse"  data-theme="b" data-icon="back"  data-iconpos="right" href="#page4">Zurück</a>
+                <h1>(c) 2015 by Dr. Jörg Tuttas</h1>
+            </div>
+        </div>
+        <div data-role="page" id="page9" data-title="Webservices">
+            <div data-role="header">
+                <h1>Webservices</h1>
+            </div>
+            <div data-role="content">
+                <h2>LedServlet</h2>
+                <div class="servletinfo">
+                    Mit Hilfe des <a href="LedServlet" target="_blank">LedServlet</a> ist es möglich den dim-Wert des Dimmers abzufragen bzw. zu setzen (über den Befehl <i>dim</i>). 
+                    Über einen zusätzlichen Parameter (<i>out</i>) ist es möglich unterschiedliche Ausgabeformate zu wählen (xml,json,html und plain {default}).                    
+                    <h3>Parameter</h3>
+                    <ul>
+                        <li><i>out</i> :Ausgabeformat wählen. Unterstützte Formate sind xml,json,html,plain[default]</li>
+                        <li><i>dim</i> :Setzt den Dimmer auf dem angegebenen Wert</li>
+                    </ul>
+                </div>
+                <div class="servletexample">
+                    <h3>Beispiele</h3>
+                    <ul>
+                        <li>Dim Wert abfragen und in xml ausgeben: <a href="LedServlet?out=xml" target="_blank">LedServlet?out=xml</a></li>
+                        <li>Dim Wert auf 50% setzten: <a href="LedServlet?dim=50" target="_blank">LedServlet?dim=50</a></li>
+                        <li>Dim Wert auf 25% setzten und als JSON ausgeben: <a href="LedServlet?dim=25&amp;out=json" target="_blank">LedServlet?dim=25&amp;out=json</a></li>
+                    </ul>
+                    
+                </div>
+                <hr></hr>
+                <h2>SensorServlet</h2>
+                <div class="servletinfo">
+                    Mit Hilfe des <a href="SensorServlet" target="_blank">SensorServlet</a> ist es möglich die Messwerte des Temperatursensors abzufragen. 
+                    Ferner gestattet es das Servlet die Sensordaten in eine Datenbank zu schreiben, bzw. wieder auszulesen!
+                    <h3>Parameter</h3>
+                    <ul>
+                        <li><i>out</i> :Ausgabeformat wählen. Unterstützte Formate sind xml,json,html [default],plain,csv</li>
+                        <li><i>log</i> :Wird log auf true gesetzt, so werden die aktuellen Messwerte in die Datenbank geschrieben</li>
+                        <li><i>last</i> :Ließt die letzten als Parameter angegeben Werte aus der Datenbank </li>
+                        <li><i>from</i> :Ließt die letzten Parameter ab dem angegebenen Timestamp (im SQL Format) aus der Datenbank </li>
+                        <li><i>to</i> :Ließt die Messwerte bis zu dem angegebenen Timestamp (im SQL Format) aus der Datenbank </li>
+                    </ul>
+                <div class="servletexample">
+                    <h3>Beispiele</h3>
+                    <ul>
+                        <li>Abfrage der aktuellen Messwerte als HTML: <a href="SensorServlet" target="_blank">SensorServlet</a></li>
+                        <li>Abfrage der aktuellen Messwerte als XML: <a href="SensorServlet?out=xml" target="_blank">SensorServlet?out=xml</a></li>
+                        <li>Abfrage der aktuellen Messwerte als JSON: <a href="SensorServlet?out=json" target="_blank">SensorServlet?out=json</a></li>
+                        <li>Schreiben der Messwerte in die Datenbank und Ausgabe als XML: <a href="SensorServlet?out=xml&amp;log=true" target="_blank">SensorServlet?out=xml&amp;log=true</a></li>
+                        <li>Auslesen der letzten 10 Messwerte und Ausgabe als csv: <a href="SensorServlet?out=csv&amp;last=10" target="_blank">SensorServlet?out=csv&amp;last=10</a></li>
+                        <li>Auslesen ab dem 2.3.2015 und Ausgabe als xml: <a href="SensorServlet?out=xml&amp;from='2015-3-2'" target="_blank">SensorServlet?out=xml&amp;from='2015-3-2'</a></li>
+                        <li>Auslesen Messwerte zwischen dem 3.3.2015 und 5.3.2015 und Ausgabe als html: <a href="SensorServlet?out=xml&amp;from='2015-3-3'&amp;to='2015-3-5'" target="_blank">SensorServlet?out=xml&amp;from='2015-3-3'&amp;to='2015-3-5'</a></li>
+                    </ul>
+                    
+                </div>
+                    <hr></hr>
+                <h2>Restful Services</h2>
+                <div class="servletinfo">
+                    Es existieren auch zwei Restful Services, die die LED bzw. den Sensor abfragen. Zu erreichen sind die Restful Services über die Adresse <a href="api/v1/led" target="_blank">LED Service</a> und <a href="api/v1/temperature" target="_blank">Sensor Service</a>. Die Services antworten dabei (wie 
+                    bei einem Restful Service üblich) über ein JSON Objekt. Beim LED Restful Service kann auch via HTTP-POST der DIM Value verändert werden. Dazu muss das JSON Objekt als Body mitgeliefert werden.
+                </div>
+                </div>
+            </div>
+            <div data-role="footer" data-position="fixed" data-theme="a">
+                <a  data-transition="flip" data-direction="reverse"  data-theme="b" data-icon="back"  data-iconpos="right" href="#page1">Zurück</a>
+                <h1>(c) 2015 by Dr. Jörg Tuttas</h1>
+            </div>
+        </div>
+        <div data-role="page" id="page10">
+            <div data-role="header">
+                <a  data-transition="slide"  data-direction="reverse" data-icon="arrow-l" class="ui-btn-left" data-iconpos="left"  href="#page4">zurück</a>
+                <h1>Chart</h1>
+            </div>
+            <div data-role="content">
+                 <div id="chartdiv"></div>
+            </div>
+            <div data-role="footer" data-position="fixed" data-theme="a">
+                <h1>(c) 2015 by Dr. Jörg Tuttas</h1>
+            </div>
+        </div>
+    </h:body>
+
+</html>
