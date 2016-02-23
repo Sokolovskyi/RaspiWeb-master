@@ -22,18 +22,31 @@ $(document).ready(function () {
 
         };
     }
+    if (dimblasterWebSocket == undefined) {
+
+        dimblasterWebSocket = new WebSocket("ws://" + serveradress + "/blasterpoint");
+        dimblasterWebSocket.onmessage = function (event) {
+            var dimblaster = event.data;
+            console.log("dimSocket blaster receive (" + dimblaster + ")");
+
+            $('#sliderNew').val(dimblaster);
+            if ($('#sliderNew').is(":visible")) {
+                $('#sliderNew').slider('refresh');
+            }
+        };
+    }
     if (dimledWebSocket == undefined) {
 
         dimledWebSocket = new WebSocket("ws://" + serveradress + "/ledpoint");
         dimledWebSocket.onmessage = function (event) {
-            var dim = event.data;
-            console.log("dimSocket led receive (" + dim + ")");
+            var dimled = event.data;
+            console.log("dimSocket led receive (" + dimled + ")");
 
-            $('#slider1').val(dim);
+            $('#slider1').val(dimled);
             if ($('#slider1').is(":visible")) {
                 $('#slider1').slider('refresh');
             }
-            if (dim == 0) {
+            if (dimled == 0) {
                 $('#toggle').val('0');
                 if ($('#toggle').is(":visible")) {
                     $('#toggle').slider('refresh');
@@ -48,20 +61,16 @@ $(document).ready(function () {
             }
         };
     }
-
-      if (dimblasterWebSocket == undefined) {
-
-        dimblasterWebSocket = new WebSocket("ws://" + serveradress + "/blasterpoint");
-        dimblasterWebSocket.onmessage = function (event) {
-            var dim = event.data;
-            console.log("dimSocket blaster receive (" + dim + ")");
-
-            $('#sliderNew').val(dim);
-            if ($('#sliderNew').is(":visible")) {
-                $('#sliderNew').slider('refresh');
-            }
-        };
-    }
+        $('#fieldsliderNew').change(function () {
+        if (dimblasterWebSocket != undefined) {
+        dimblasterWebSocket.send($('#sliderNew').val());
+        console.log("send via Websocket blaster " + $('#sliderNew').val());
+        }
+        else {
+            console.log("Keine Websocket Verbindung");
+        }
+        });
+      
         $('#toggle').change(function () {
         if (dimledWebSocket != undefined) {
             dimledWebSocket.send($('#toggle').val());
@@ -71,15 +80,7 @@ $(document).ready(function () {
             console.log("Keine Websocket Verbindung");
         }
     });
-    $('#fieldsliderNew').change(function () {
-    if (dimblasterWebSocket != undefined) {
-        dimblasterWebSocket.send($('#sliderNew').val());
-        console.log("send via Websocket blaster " + $('#sliderNew').val());
-        }
-        else {
-            console.log("Keine Websocket Verbindung");
-        }
-        });
+
 });
 
 /*

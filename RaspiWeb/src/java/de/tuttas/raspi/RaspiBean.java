@@ -64,7 +64,7 @@ public class RaspiBean {
         this.BlasterState = BlasterState;
     }
     
-    public int getBlusterState() {
+    public int getBlasterState() {
         return BlasterState;
                 
     }
@@ -75,7 +75,7 @@ public class RaspiBean {
         if (BlasterControl!=null) BlasterControl.dim(BlasterGlow);
     }
 
-    public int getBlusterGlow() {
+    public int getBlasterGlow() {
         return BlasterGlow;
     }
 

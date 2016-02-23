@@ -58,6 +58,7 @@ public class DS180WSEndpoint implements DS18B20ValueChangedListener{
             session.getBasicRemote().sendText(ds180.toJson(true));
         } catch (IOException ex) {
             Logger.getLogger(LedWSEndpoint.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(BlasterWSEndpoint.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     

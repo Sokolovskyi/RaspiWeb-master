@@ -52,12 +52,15 @@ public class RPIServoBlasterExample implements Runnable {
     dimmer = new Thread(this);
     running = true;
     dimmer.start();
+    System.out.println("ttt constructor was created");
     }
     
     public static RPIServoBlasterExample getInstance(int pin) {
         if (instances[pin] == null) {
             instances[pin] = new RPIServoBlasterExample(pin);
+            System.out.println("ttt new instance" + pin);
         }
+        System.out.println("ttt return created instance" + pin);
         return instances[pin];
     }
     
